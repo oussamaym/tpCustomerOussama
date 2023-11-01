@@ -4,40 +4,31 @@
  */
 package org.emsi.tpcustomeroussama.service;
 
-/**
- *
- * @author DELL
- */
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 import java.util.List;
-import org.emsi.tpcustomeroussama.entity.Customer;
+import org.emsi.tpcustomeroussama.entity.Discount;
 
 @RequestScoped
-public class CustomerManager {
+public class DiscountManager {
 
-    @PersistenceContext(unitName = "customerPU")
+    @PersistenceContext
     private EntityManager em;
 
-    public List<Customer> getAllCustomers() {
-        Query query = em.createNamedQuery("Customer.findAll");
+    public List<Discount> getAllDiscounts() {
+        Query query = em.createNamedQuery("Discount.findAll");
         return query.getResultList();
     }
 
-    @Transactional
-    public Customer update(Customer customer) {
-        return em.merge(customer);
+    public Discount findById(String code) {
+        return em.find(Discount.class, code);
     }
 
     @Transactional
-    public void persist(Customer customer) {
-        em.persist(customer);
-    }
-
-    public Customer findById(int idCustomer) {
-        return em.find(Customer.class, idCustomer);
+    public void persist(Discount discount) {
+        em.persist(discount);
     }
 }
