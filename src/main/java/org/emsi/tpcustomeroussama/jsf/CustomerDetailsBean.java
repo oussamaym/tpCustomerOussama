@@ -44,7 +44,7 @@ public class CustomerDetailsBean implements Serializable {
     public Customer getCustomer() {
         return customer;
     }
-  
+
     /**
      * Action handler - met à jour dans la base de données les données du client
      * contenu dans la variable d'instance customer.
@@ -65,7 +65,8 @@ public class CustomerDetailsBean implements Serializable {
 
     /**
      * Retourne la liste de tous les Discount.
-     * @return 
+     *
+     * @return
      */
     public List<Discount> getDiscounts() {
         return discountManager.getAllDiscounts();
